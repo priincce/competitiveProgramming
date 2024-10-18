@@ -1,33 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve1(vector<int> &ans, vector<int> &arr, int index, int &val) {
-    if (index >= arr.size()) return;
+// void solve1(vector<int> &ans, vector<int> &arr, int index, int &val) {
+   
     
-    ans.push_back(arr[index]);
-    
-    for (int i = index + 2; i < arr.size(); i++) {
-        solve1(ans, arr, i, val);
-    }
-    
-    val = max(val, (int)ans.size() + *max_element(ans.begin(), ans.end()));
-    
-    ans.pop_back();
-}
+ 
+// }
 
 void solve() {
-    int n, val = INT_MIN;
+    int n,k, ans=1; 
     cin >> n;
-    vector<int> v(n);
+    vector<int> v(n+1,0);
     
-    for (int i = 0; i < n; i++) {
+    for (int i = 1; i <=n; i++) {
         cin >> v[i];
     }
-    
-    vector<int> ans;
-    solve1(ans, v, 0, val);
-    cout << val << endl;
+
+    sort(v.begin(),v.end());
+    int right = n;
+
+    for(int i=n-1;i>=0;i--)
+		{
+			if(v[i+1]-v[i]>1){right=i;}
+			while(v[right]-v[i]>=k){right--;}
+			ans=max(ans,right-i+1);
+		}
+		cout<<ans<<endl;
 }
+// #include<bits/stdc++.h>
+// using namespace std;
+// int t,n,k;
+// int a[200050];
+// int main(){
+// 	cin>>t;
+// 	while(t--){
+// 		cin>>n>>k;
+// 		for(int i=1;i<=n;i++){
+// 			cin>>a[i];
+// 		}
+// 		sort(a+1,a+n+1);
+// 		int r=n;
+// 		int ans=1;
+// 		for(int i=n-1;i>=1;i--)
+// 		{
+// 			if(a[i+1]-a[i]>1)r=i;
+// 			while(a[r]-a[i]>=k)r--;
+// 			ans=max(ans,r-i+1);
+// 		}
+// 		cout<<ans<<endl;
+// 	}
+// }
 
 int main() {
     int t;
