@@ -1,16 +1,17 @@
 #include<bits/stdc++.h>
-#define MOD 1000000007
+#define MOD_INT 1000000007
+#define MOD 1e9+7
 using namespace std;
 
 
 int power(int num,int exp)
 {
  if (exp == 0) return 1;
-    if (exp == 1) return num % MOD;
+    if (exp == 1) return num % MOD_INT;
     int ans = power(num, exp / 2);
-    ans = (1LL * ans * ans) % MOD; 
+    ans = (1LL * ans * ans) % MOD_INT; 
     if (exp % 2 == 1) {
-        return (1LL * ans * num) % MOD;
+        return (1LL * ans * num) % MOD_INT;
     }
     return ans;
 }
@@ -19,7 +20,7 @@ void solve()
 {
      int k , p, s;
      cin >> k >> p >> s;
-     int ans = power((power(k,p)%10),s) %MOD;
+     int ans = power((power(k,p)%10),s) %MOD_INT;
      cout<<ans<<endl;
 
 }

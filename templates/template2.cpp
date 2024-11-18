@@ -34,33 +34,15 @@ using namespace std;
 
 const int MOD = 1000000007;
 
-pii uniqueNUm2(vector<int>&nums,int n)
-{
-      int XOR = 0;
-      for(auto num:nums)XOR^=num;
-      int mask=0;
-      for(int i=0;i<32;i++){
-            if(XOR & (1<<i)){
-                  mask = 1<<i;
-                  break;
-            }
-            
-      }
-      int xorA=0,xorB=0;
-      for(auto num:nums){
-            if(num & mask)xorA^=num;
-            else xorB^=num;
-      }
-      return {xorA,xorB};
-}
+
 void solve()
 {
       int n;
       cin>>n;
       vector<int>v(n);
       for(int i=0;i<n;i++)cin>>v[i];
-      pii p = uniqueNUm2(v,n);
-      cout<<p.F<<" "<<p.S<<endl;
+      for(auto x:v)cout<<x<<" ";
+      cout<<endl;
 }
 
 int32_t main()
