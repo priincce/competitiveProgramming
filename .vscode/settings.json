@@ -8,7 +8,8 @@
         "cmath": "cpp",
         "cstdlib": "cpp",
         "format": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "set": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

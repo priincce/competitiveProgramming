@@ -1,22 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-void solve()
-{
-      string s;
-      cin>>s;
-      string wub="WUB";
-      size_t pos;
-      while ((pos = s.find(wub)) != string::npos) { 
-            s.replace(pos, wub.length(), " "); 
-      
-      }
-      while (!s.empty() && s.front() == ' ') s.erase(0, 1);
-      while (!s.empty() && s.back() == ' ') s.pop_back();
-      cout<<s<<endl;
-}
-int main()
-{
-      
-      solve();
-      return 0;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, q;
+    cin >> n >> q;
+
+    multiset<int> barrels;
+    for (int i = 0; i < n; i++) {
+        int a;
+        cin >> a;
+        barrels.insert(a);
+    }
+
+    // Function to check if the poisonous barrel can be identified
+    auto canIdentify = [&]() {
+        if (barrels.size() == 1) return true; // Only one barrel, it must be poisonous
+        if (*barrels.begin() != *barrels.rbegin()) return true; // At least two unique weights
+        return false; // All barrels have the same weight
+    };
+
+    // Output the initial answer
+    cout << (canIdentify() ? "Yes" : "No") << "\n";
+
+    // Process queries
+    while (q--) {
+        char op;
+        int x;
+        cin >> op >> x;
+
+        if (op == '+') {
+            barrels.insert(x);
+        } else {
+            barrels.erase(barrels.find(x));
+        }
+
+        // Output the answer after each query
+        cout << (canIdentify() ? "Yes" : "No") << "\n";
+    }
+
+    return 0;
 }

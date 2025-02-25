@@ -11,24 +11,24 @@
       "args": [
         "copy",
         "\"${file}\"",
-        "${workspaceFolder}\\zspwTest.cpp",
+        "${workspaceFolder}\\prince.cpp",
         "&&",
         "g++",
-        "zspwTest.cpp",
+        "prince.cpp",
         "-o",
-        "zspwTest",
+        "prince",
         "&&",
-        "zspwTest",
+        "prince",
         "<",
         "input.txt",
         ">",
         "output.txt",
         "&&",
         "del",
-        "zspwTest.exe",
+        "prince.exe",
         "&&",
         "del",
-        "zspwTest.cpp"
+        "prince.cpp"
       ],
       "presentation": {
         "reveal": "never"
